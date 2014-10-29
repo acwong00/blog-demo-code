@@ -144,15 +144,15 @@ function moveLeft() {
     return true;
 }
 
-// function moveUp() {
-//     if (!canMoveUp(board)) {
-//         return false;
-//     }
-//     for (var i = 1; i < 4; i++) {
-//         for (var j = 0; j < 4; j++) {
-//             if (board[i][j] !== 0) {
-//                 for
-//             }
-//         }
-//     }
-// }
+function moveUp() {
+    if (!canMoveUp(board)) {
+        return false;
+    }
+    for (var i = 1; i < 4; i++) {
+        for (var j = 0; j < 4; j++) {
+            if (board[i][j] !== 0) {
+                for
+            }
+        }
+    }
+}
