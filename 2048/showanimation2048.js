@@ -20,3 +20,7 @@ function showMoveAnimation(fromx,fromy,tox,toy) {
         'left': getPostLeft(tox,toy)
     }, 200);
 }
+
+function updateScore (score) {
+    $('#score').text(score);
+}
