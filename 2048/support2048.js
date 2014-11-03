@@ -1,9 +1,14 @@
+var documentWidth = window.screen.availWidth;
+var gridContainerWidth = 0.92 * documentWidth;
+var cellSideLength = 0.18 * documentWidth;
+var cellSpace = 0.04 * documentWidth;
+
 function getPostTop(i,j) {
-    return 20 + i*120;
+    return cellSpace + i * (cellSpace + cellSideLength);
 }
 
 function getPostLeft(i,j) {
-    return 20 + j*120;
+    return cellSpace + j * (cellSpace + cellSideLength);
 }
 
 function getNumberBackgroundColor(number) {

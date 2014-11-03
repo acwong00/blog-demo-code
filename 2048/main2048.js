@@ -2,9 +2,36 @@ var board = new Array();
 var score = 0;
 var hasConflicted = new Array();
 
+var startx = 0;
+var starty = 0;
+var endx = 0;
+var endy = 0;
+
 $(function() {
+    prepareForMobile();
     newgame();
 });
+
+function prepareForMobile () {
+    if (documentWidth > 500) {
+        gridContainerWidth = 500;
+        cellSpace = 20;
+        cellSideLength = 100;
+    }
+
+    $('#grid-container').css({
+        'width': gridContainerWidth - 2 * cellSpace,
+        'height': gridContainerWidth - 2 * cellSpace,
+        'padding': cellSpace,
+        'border-radius': 0.02 * gridContainerWidth
+    });
+
+    $('.grid-cell').css({
+        'width': cellSideLength,
+        'height': cellSideLength,
+        'border': 0.02 * cellSideLength
+    });
+}
 
 function newgame() {
     // 初始化
@@ -50,23 +77,34 @@ function updateBoardView() {
                 theNumberCell.css({
                     'width': '0px',
                     'height': '0px',
-                    'top': getPostTop(i, j) + 50,
-                    'left': getPostLeft(i, j) + 50
+                    'top': getPostTop(i, j) + cellSideLength/2,
+                    'left': getPostLeft(i, j) + cellSideLength/2
                 });
             } else {
                 theNumberCell.css({
-                    'width': '100px',
-                    'height': '100px',
+                    'width': cellSideLength,
+                    'height': cellSideLength,
                     'top': getPostTop(i, j),
                     'left': getPostLeft(i, j),
                     'background-color': getNumberBackgroundColor(board[i][j]),
                     'color': getNumberColor(board[i][j])
                 }).text(board[i][j]);
+
+                if (board[i][j] === 512) {
+                    theNumberCell.css('font-size','40px');
+                }
+                if (board[i][j] >= 1000) {
+                    theNumberCell.css('font-size','30px');
+                }
+
             }
+
 
             hasConflicted[i][j] = false;
         }
     }
+    $('.number-cell').css('line-height', cellSideLength + 'px');
+    $('.number-cell').css('font-size', 0.6 * cellSideLength + 'px');
 }
 
 function generateOneNumber() {
@@ -112,24 +150,28 @@ function generateOneNumber() {
 $(document).keydown(function(event){
     switch(event.keyCode) {
         case 37:
+            event.preventDefault();
             if (moveLeft()) {
                 setTimeout(generateOneNumber,210);
                 setTimeout(isgameover,300);
             }
             break;
         case 38:
+            event.preventDefault();
             if (moveUp()) {
                 setTimeout(generateOneNumber,210);
                 setTimeout(isgameover,300);
             }
             break;
         case 39:
+            event.preventDefault();
             if (moveRight()) {
                 setTimeout(generateOneNumber,210);
                 setTimeout(isgameover,300);
             }
             break;
         case 40:
+            event.preventDefault();
             if (moveDown()) {
                 setTimeout(generateOneNumber,210);
                 setTimeout(isgameover,300);
@@ -137,6 +179,53 @@ $(document).keydown(function(event){
             break;
         default:
             break;
+    }
+});
+
+document.addEventListener('touchstart',function(event){
+    startx = event.touches[0].pageX;
+    starty = event.touches[0].pageY;
+});
+
+document.addEventListener('touchmove',function(event){
+    event.preventDefault();
+});
+
+document.addEventListener('touchend', function(event) {
+    endx = event.changedTouches[0].pageX;
+    endy = event.changedTouches[0].pageY;
+
+    var deltax = endx - startx;
+    var deltay = endy - starty;
+
+    if (Math.abs(deltax) < 0.3 * documentWidth && Math.abs(deltay) < 0.3 * documentWidth) {
+        return;
+    }
+
+    if (Math.abs(deltax) > Math.abs(deltay)) {
+        if (deltax > 0) {
+            if (moveRight()) {
+                setTimeout(generateOneNumber, 210);
+                setTimeout(isgameover, 300);
+            }
+        } else {
+            if (moveLeft()) {
+                setTimeout(generateOneNumber, 210);
+                setTimeout(isgameover, 300);
+            }
+        }
+    } else {
+        if (deltay > 0) {
+            if (moveDown()) {
+                setTimeout(generateOneNumber, 210);
+                setTimeout(isgameover, 300);
+            }
+        } else {
+            if (moveUp()) {
+                setTimeout(generateOneNumber, 210);
+                setTimeout(isgameover, 300);
+            }
+        }
     }
 });
 
@@ -217,7 +306,7 @@ function moveRight() {
                         showMoveAnimation(i, j, i, k);
                         board[i][k] += board[i][j];
                         board[i][j] = 0;
-                        score = board[i][k];
+                        score += board[i][k];
                         updateScore(score);
                         hasConflicted[i][k] = true;
                         continue;
@@ -247,7 +336,7 @@ function moveDown () {
                         showMoveAnimation(i,j,k,j);
                         board[k][j] += board[i][j];
                         board[i][j] = 0;
-                        score = board[k][j];
+                        score += board[k][j];
                         hasConflicted[k][j] = true;
                         updateScore(score);
                         continue;
