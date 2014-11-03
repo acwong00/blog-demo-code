@@ -185,6 +185,7 @@ $(document).keydown(function(event){
 document.addEventListener('touchstart',function(event){
     startx = event.touches[0].pageX;
     starty = event.touches[0].pageY;
+    console.log(starty);
 });
 
 document.addEventListener('touchmove',function(event){
