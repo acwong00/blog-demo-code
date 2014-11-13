@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>2048</title>
-    <link rel="stylesheet" href="../static/2048.css">
-    <!--<script src="../sea-modules/jquery/1.11.1/jquery-1.11.1.min.js"></script>
-    <script src="../static/support2048.js"></script>
-    <script src="../static/showanimation2048.js"></script>
-    <script src="../static/main2048.js"></script>-->
+    <link rel="stylesheet" href="../static/css/2048.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--<script src="../static/support.js"></script>
+    <script src="../static/showanimation.js"></script>
+    <script src="../static/main.js"></script>-->
 </head>
 <body>
     <header>
@@ -34,16 +34,13 @@
         <div class="grid-cell" id="grid-cell-3-2"></div>
         <div class="grid-cell" id="grid-cell-3-3"></div>
     </div>
-    <script src="../sea-modules/seajs/2.3.0/dist/sea.js"></script>
+    <script src="../static/lib/sea.js"></script>
     <script>
         seajs.config({
-            base: "../sea-modules/",
-            alias: {
-                "jquery": "jquery/1.11.1/jquery-1.11.1.min.js"
-            }
+            base: "../static/",
         });
 
-        seajs.use("../static/main2048.js");
+        seajs.use("game/main.js");
     </script>
 </body>
 </html>

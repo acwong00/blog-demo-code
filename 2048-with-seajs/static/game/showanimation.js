@@ -1,6 +1,5 @@
 define(function(require,exports,moudule) {
-    var $ = require('jquery');
-    var support = require('./support2048')
+    var support = require('./support')
 
     exports.showNumberWithAnimation = function(i, j, randNumber) {
         var numberCell = $('#number-cell-' + i + '-' + j);

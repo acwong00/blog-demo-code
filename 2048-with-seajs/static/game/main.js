@@ -1,7 +1,6 @@
 define(function(require,exports,moudle) {
-    var $ = require('jquery');
-    var support = require('./support2048');
-    var animation = require('./showanimation2048');
+    var support = require('./support');
+    var animation = require('./showanimation');
     var board = new Array();
     var score = 0;
     var hasConflicted = new Array();
