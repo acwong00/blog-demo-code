@@ -1,0 +1,10 @@
+{
+  "name": "2048",
+  "version": "1.0.0",
+  "description": "2048 with seajs",
+  "author": "acwong",
+  "license": "MIT",
+  "spm": {
+    "main": "static/game/main.js"
+  }
+}
