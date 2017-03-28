@@ -1,0 +1,40 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: #000;
+    color: rgb(57, 219, 31);
+    font-family: Consolas;
+    font-size: 14px;
+}
+
+a {
+    color: rgb(47, 219, 219);
+}
+
+#container {
+    height: 100%;
+}
+
+#terminal {
+    width: 95%;
+    height: 90%;
+    padding: 15px;
+}
+
+#terminalPrint div {
+    height: 20px;
+    line-height: 20px;
+}
+
+#commandInput {
+    border: none;
+    outline: none;
+    background-color: #000;
+    color: rgb(57, 219, 31);
+    font-family: Consolas;
+    font-size: 14px;
+}

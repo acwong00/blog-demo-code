@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Command Line</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<base target="_blank">
+<body>
+    <div id="container">
+        <div id="terminal">
+            <div id="terminalPrint"></div>
+            <div id="command">
+                <input type="text" id="commandInput" />
+            </div>
+        </div>
+    </div>
+    <script id="commandTemplate" type="text/template">
+        <label><%- prompt %></label>
+    </script>
+    <script id="messageTemplate" type="text/template">
+        <div <%= color ? ('style="color:' + color + '"') : '' %>>
+            <%= link ? ('<a href="' + link + '">') : '' %>
+                <%= message %>
+            <%= link ? ('</a>') : '' %>
+        </div>
+    </script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="http://apps.bdimg.com/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="http://apps.bdimg.com/libs/backbone.js/1.1.2/backbone-min.js"></script>
+    <script src="./js/command-model.js"></script>
+    <script src="./js/command-collection.js"></script>
+    <script src="./js/command-view.js"></script>
+    <script src="./js/message-view.js"></script>
+    <script src="./js/app-view.js"></script>     
+    <script src="test.js"></script>
+</body>
+</html>

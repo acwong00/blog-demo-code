@@ -1,0 +1,26 @@
+{
+  "name": "backbone-command-line",
+  "version": "0.0.2",
+  "main": "all.js",
+  "dependencies": {
+    "html-loader": "^0.2.3",
+    "webpack": "^1.8.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/acwong00/backbone-command-line.git"
+  },
+  "author": "acwong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/acwong00/backbone-command-line/issues"
+  },
+  "homepage": "https://github.com/acwong00/backbone-command-line",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.10.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-webpack": "^1.4.0"
+  }
+}
