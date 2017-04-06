@@ -1,0 +1,13 @@
+# vuex-gank
+
+> A Vue.js project
+
+## run
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+```
